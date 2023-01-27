@@ -1,7 +1,7 @@
 describe('My Second Test Suite', function() 
 {
  
-it('My FirstTest case',function() {
+it('Test Case 6',function() {
  
 
 cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
