@@ -22,7 +22,7 @@ cy.get('.ui-menu-item div').each(($e1, index, $list) => {
  
     if($e1.text()==="Indonesia")
     {
-        $e1.click()
+        $e1.trigger('click')
     }
  
  
