@@ -1,14 +1,19 @@
 /// <reference types="Cypress" />
 /// <reference types="cypress-iframe" />
+import AutomationPractice from '../../PageObject/AutomationPractice'
 import 'cypress-iframe'
 
 describe('Frames Test', function(){
     it('Demo Example',function(){
-        cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
-        cy.frameLoaded('#courses-iframe')
+        cy.visit(Cypress.env('url')+"AutomationPractice/")
+        const automationPractice = new AutomationPractice()
+
+        automationPractice.getIFrame()
+        automationPractice.getIFrameMentorship().eq(0).click()
         cy.wait(5000)
-        cy.iframe().find("a[href*='mentorship']").eq(0).click()
-        cy.iframe().find("h1[class*='pricing-title']").should('have.length', '2')
+        automationPractice.getIFramePricing().should('have.length', '2')     
+        
+       
         
     })
 })
