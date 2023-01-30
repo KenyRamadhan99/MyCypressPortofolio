@@ -1,5 +1,10 @@
 {
   "name": "Sonia",
-  "gender": "Female"
+  "email" : "kenny@gmail.com",
+  "gender": "Female",
+  "password" : "password1234",
+  "dateBirth" : "06/01/1999",
+  "country" : "Indonesia",
+  "nameProduct": ["Blackberry","Nokia Edge","Samsung Note 8"]
  
 }
