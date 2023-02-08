@@ -1,15 +1,15 @@
+import GreenKart from "../../PageObject/GreenKart";
 describe ('My First Test', function() //Ini Test Suite 
 {
   it('Test Case 1', function() // Ini Test Case
   {
     //Ini Test Step 
-    cy.clearAllCookies
-    cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/"); // visit digunakan untuk navigasi url
-    cy.get('.search-keyword').type('ca', {force: true}); // Type digunakan untuk input
-    cy.wait(2000); // wait digunakan untuk delay 
-    cy.get('.products').as('productLocator')
+    const greenKart = new GreenKart()
+    cy.visit(Cypress.env('url')+"seleniumPractise/#/"); // visit digunakan untuk navigasi url
+    greenKart.getSearchColumn().type('ca', {force: true}); // Type digunakan untuk input
+    greenKart.getAllProductColumn().as('productLocator')
     cy.get('@productLocator').find('.product').should('have.length', 4); // ini hit element parent lalu cari element child nya
-    cy.get('.product').should('have.length',5); // ini akan mengambil semua element bahkan yang tidak terlihat
+    greenKart.getAllProductColumn().should('have.length',5); // ini akan mengambil semua element bahkan yang tidak terlihat
     cy.get('.product:visible').should('have.length',4); // visible digunakan untuk validasi element yang hanya terlihat saja jadi element yang tidak terlihat tidak akan tertangkap oleh cypress
    
     // Parent Child Chaining
