@@ -1,11 +1,12 @@
+import AutomationPractice from "../../PageObject/AutomationPractice";
 describe ('My Fourth Test', function() //Ini Test Suite 
 {
   it('Test Case 4', function() // Ini Test Case
   {
     //Ini Test Step 
-    cy.clearAllCookies
+    const automationPractice = new AutomationPractice()
     cy.visit("https://rahulshettyacademy.com/AutomationPractice/"); // visit digunakan untuk navigasi url
-    cy.get('#alertbtn').click()
+   automationPractice.AutomationPractice().click()
     cy.get('#confirmbtn').click()
     
     //Cypress secara otomatis menghandle alert, jadi untuk melakukan asertion pada teks alert 
@@ -20,7 +21,7 @@ describe ('My Fourth Test', function() //Ini Test Suite
     })
 
     //Manipulasi attribut agar tidak membuka tab baru menggunakan jquery karena cypress tidak bisa menghandle new tab dan new window
-    cy.get('#opentab').invoke('removeAttr','target').click()
+    automationPractice.getTabButton().invoke('removeAttr','target').click()
     cy.url().should('include','rahulshettyacademy')
     
     //Navigasi 
