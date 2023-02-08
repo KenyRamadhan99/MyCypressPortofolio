@@ -1,53 +1,43 @@
+import AutomationPractice from "../../PageObject/AutomationPractice"
 describe('My Third Test Suite', function() 
 {
  
 it('My Third Test case',function() {
  
- 
-cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
+const automationPractice = new AutomationPractice()
+cy.visit(Cypress.env('url')+"AutomationPractice/")
 
 //Check boxes
-cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
-cy.get('#checkBoxOption1').check().should('be.checked').and('have.value','option1')
-cy.get('#checkBoxOption1').uncheck().should('not.be.checked')
-cy.get('input[type="checkbox"]').check(['option2','option3'])
+cy.visit(Cypress.env('url')+"AutomationPractice/")
+automationPractice.getCheckBox1().check().should('be.checked').and('have.value','option1')
+automationPractice.getCheckBox1().uncheck().should('not.be.checked')
+automationPractice.getAllCheckBox().check(['option2','option3'])
  
 //Static Dropdown
- cy.get('select').select('option2').should('have.value','option2')
+ automationPractice.getDropdownStatic().select('option2').should('have.value','option2')
  
 //Dynamic dropdowns
-cy.get('#autocomplete').type('ind')
- 
-cy.get('.ui-menu-item div').each(($e1, index, $list) => {
+automationPractice.getDropdownDynamic().type('ind')
+automationPractice.getListDropdownDynamic().each(($e1, index, $list) => {
  
     if($e1.text()==="Indonesia")
     {
         $e1.trigger('click')
     }
- 
- 
 })
 
 //autocomplete
-cy.get('#autocomplete').should('have.value','Indonesia')
+automationPractice.getDropdownDynamic().should('have.value','Indonesia')
 
 //visible invisible
-cy.get('#displayed-text').should('be.visible')
-cy.get('#hide-textbox').click()
-cy.get('#displayed-text').should('not.be.visible')
-cy.get('#show-textbox').click()
-cy.get('#displayed-text').should('be.visible')
+automationPractice.getDisplayedText().should('be.visible')
+automationPractice.getHideTextBox().click()
+automationPractice.getDisplayedText().should('not.be.visible')
+automationPractice.getShowText().click()
+automationPractice.getDisplayedText().should('be.visible')
  
 //radio buttons
- cy.get('[value="radio2"]').check().should('be.checked')
- 
- 
- 
- 
- 
- 
- 
- 
+ automationPractice.getRadioButton().check().should('be.checked')
 
 }  )
  
